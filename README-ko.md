@@ -44,59 +44,7 @@ const Page = () => {
 이 프로젝트는 SSR/SSG 빌드 방식을 지원합니다. 만약 SSG로 빌드를 원할 경우 `yarn static`을 입력하여 빌드하고 `out`폴더를 배포하시면 됩니다.
 그리고 SSR로 빌드하고 싶다면 `yarn build`를 입력하시면 됩니다.
 
-### 5. Routes 객체 동적 생성
-
-이 프로젝트에서는 Routes 객체가 담긴 파일을 개발 서버를 시작하거나 빌드할 때 생성할 수 있습니다.
-만약 이 프로젝트를 시작했거나 빌드했을 경우 routes.ts라는 파일이 `_generated`라는 폴더에 생성될 것이며 아래와 같은 형식을 하고 있습니다.(포맷팅 적용 되어 있음)
-
-```ts
-const routes = [
-  { path: "/", name: "Blog" },
-  { path: "/projects", name: "Projects" },
-  { path: "/resume", name: "Resume" },
-];
-
-export default routes;
-```
-
-routes.ts 파일은 객체로써 사용될 수 있으며 `components/header/index.tsx`처럼 아무 컴포넌트에서 사용할 수 있습니다.
-
-```tsx
-// ...
-import routes from "~/_generated/routes";
-
-const Header = () => {
-  return (
-    // ...
-    <NavList className="flex-col md:flex-row">
-      {routes.map((route: Route) => {
-        return (
-          <NavItem href={route.path} pathname={pathname} key={route.name}>
-            {route.name}
-          </NavItem>
-        );
-      })}
-    </NavList>
-    // ...
-  );
-};
-
-export default Header;
-```
-
-만약 추가하고 싶지 않는 Routes가 있다면 `scripts/routes.ts`에서 변경할 수 있으며 `getPages`라는 함수를 아래와 같이 변경하면 됩니다.
-
-```ts
-// ...
-pipe(
-  getPages(["pages/api/*", "pages/_*", "pages/index.*"]), // 추가하고 싶지 않다면 여기에 내용을 추가하세요.
-  generateRouteContent("blog"),
-  writeFile("_generated/routes.ts")
-);
-// ...
-```
-
-### 6. i18n 번역 (새로운 기능! / 현재 SSR에서만 사용 가능)
+### 5. i18n 번역 (새로운 기능! / 현재 SSR에서만 사용 가능)
 
 > 이 기능은 현재 SSR에서만 동작하며 곧 SSG에도 대응 할 예정입니다.
 > next-i18next과 관련된 문서를 보고 싶다면 [여기를 눌러주세요.](https://github.com/i18next/next-i18next)

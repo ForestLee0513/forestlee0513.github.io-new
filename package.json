@@ -6,12 +6,11 @@
     "url": "https://forestlee-nextjs-blog-demo.netlify.app"
   },
   "scripts": {
-    "filegen:routes": "node --experimental-specifier-resolution=node --loader ts-node/esm ./scripts/routes.mts",
-    "dev": "yarn filegen:routes && cross-env NEXT_PUBLIC_IS_PRODUCTION=false NEXT_PUBLIC_EXPORT_TYPE=SSR next dev",
-    "build": "yarn filegen:routes && cross-env NEXT_PUBLIC_IS_PRODUCTION=true NEXT_PUBLIC_EXPORT_TYPE=SSR next build",
+    "dev": "cross-env NEXT_PUBLIC_IS_PRODUCTION=false NEXT_PUBLIC_EXPORT_TYPE=SSR next dev",
+    "build": "cross-env NEXT_PUBLIC_IS_PRODUCTION=true NEXT_PUBLIC_EXPORT_TYPE=SSR next build",
     "start": "next start",
     "lint": "next lint",
-    "static": "yarn filegen:routes && cross-env NEXT_PUBLIC_IS_PRODUCTION=true NEXT_PUBLIC_EXPORT_TYPE=SSG next build && next export && touch ./out/.nojekyll && echo $npm_package_config_url > ./out/CNAME"
+    "static": "cross-env NEXT_PUBLIC_IS_PRODUCTION=true NEXT_PUBLIC_EXPORT_TYPE=SSG next build && next export && touch ./out/.nojekyll && echo $npm_package_config_url > ./out/CNAME"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",

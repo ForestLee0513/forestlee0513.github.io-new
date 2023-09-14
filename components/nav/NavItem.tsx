@@ -1,18 +1,13 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { HTMLAttributes } from "react";
 
 interface INavItem extends HTMLAttributes<HTMLDivElement> {
-  pathname: string;
   href: string;
 }
 
-const NavItem = ({
-  children,
-  className,
-  href,
-  pathname,
-  ...rest
-}: INavItem) => {
+const NavItem = ({ children, className, href, ...rest }: INavItem) => {
+  const { pathname } = useRouter();
   const isSamePath = pathname === href;
   const activeStyle = isSamePath ? "font-bold underline" : "";
 

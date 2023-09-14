@@ -10,13 +10,11 @@ import ThemeToggler from "~/components/ThemeToggler";
 import MenuIcon from "@mui/icons-material/Menu";
 import useToggle from "~/hooks/useToggle";
 
-import Route from "~/types/routes";
-import routes from "~/_generated/routes";
 import { Select, Option } from "~/components/select";
 import { ChangeEvent } from "react";
 
 const Header = () => {
-  const { pathname, push, route, asPath, locale } = useRouter();
+  const { push, route, asPath, locale } = useRouter();
   const [isOpen, toggle] = useToggle();
   const mobileNavStyle =
     "absolute top-full px-0 flex-col md:px-4 inset-x-0 md:static md:flex";
@@ -39,13 +37,7 @@ const Header = () => {
         </HeaderItem>
         <HeaderItem className={`${isOpen ? mobileNavStyle : "hidden"} md:flex`}>
           <NavList className="flex-col md:flex-row">
-            {routes.map((route: Route) => {
-              return (
-                <NavItem href={route.path} pathname={pathname} key={route.name}>
-                  {route.name}
-                </NavItem>
-              );
-            })}
+            <NavItem href="/resume">이름</NavItem>
           </NavList>
         </HeaderItem>
         <HeaderItemFull>
