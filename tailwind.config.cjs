@@ -6,11 +6,9 @@ module.exports = {
   ],
   darkMode: "class",
   theme: {
-    container: {
-      padding: {
-        DEFAULT: "1rem",
-        md: "2rem",
-      },
+    screens: {
+      mobile: { max: "1280px" },
+      pc: "1280px",
     },
     colors: {
       background: "#EAEFE6",
@@ -18,6 +16,33 @@ module.exports = {
       textSecondary: "#4C5349",
       primary: "#3A4C2F",
       secondary: "#DCE5D7",
+    },
+
+    extend: {
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            h1: {
+              fontSize: "3rem",
+            },
+            h2: {
+              fontSize: "2.5rem",
+            },
+            h3: {
+              fontSize: "2.062rem",
+            },
+            h4: {
+              fontSize: "1.75rem",
+            },
+            h5: {
+              fontSize: "1.438rem",
+            },
+            h6: {
+              fontSize: "1.188rem",
+            },
+          },
+        },
+      }),
     },
   },
   variants: {
