@@ -1,6 +1,4 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
-
 import HeaderContainer from "./HeaderContainer";
 import HeaderList from "./HeaderList";
 import { HeaderItem, HeaderItemFull } from "./HeaderItem";
@@ -10,22 +8,10 @@ import ThemeToggler from "~/components/ThemeToggler";
 import MenuIcon from "@mui/icons-material/Menu";
 import useToggle from "~/hooks/useToggle";
 
-import { Select, Option } from "~/components/select";
-import { ChangeEvent } from "react";
-
 const Header = () => {
-  const { push, route, asPath, locale } = useRouter();
   const [isOpen, toggle] = useToggle();
   const mobileNavStyle =
     "absolute top-full px-0 flex-col md:px-4 inset-x-0 md:static md:flex";
-
-  const handleLocaleChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    const value = event.target.value;
-
-    push(route, asPath, {
-      locale: value,
-    });
-  };
 
   return (
     <HeaderContainer className="relative">
@@ -40,12 +26,9 @@ const Header = () => {
             <NavItem href="/resume">이름</NavItem>
           </NavList>
         </HeaderItem>
-        <HeaderItemFull>
-          <Select value={locale} onChange={handleLocaleChange}>
-            <Option value="ko">Korean</Option>
-            <Option value="en-US">English</Option>
-          </Select>
-        </HeaderItemFull>
+        {/* <HeaderItemFull>
+          <ThemeToggler />
+        </HeaderItemFull> */}
         <HeaderItem className="md:hidden flex-0">
           <button
             className="my-0 w-8 h-8 flex items-center justify-center mr-0"

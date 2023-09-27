@@ -12,6 +12,13 @@ module.exports = {
         md: "2rem",
       },
     },
+    colors: {
+      background: "#EAEFE6",
+      text: "#131910",
+      textSecondary: "#4C5349",
+      primary: "#3A4C2F",
+      secondary: "#DCE5D7",
+    },
   },
   variants: {
     extend: {},
