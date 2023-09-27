@@ -13,15 +13,35 @@ type Props = {
   articles: Post[];
 };
 
-const Index = ({ articles }: Props) => {
+const Blog = ({ articles }: Props) => {
   const { t } = useTranslation("common");
 
   return (
     <div>
       <HeadMeta useDyanmicThumbnail={false} />
-      <main>This is main page.</main>
+      <main>
+        <List
+          route="/blog"
+          articles={articles}
+          emptyErrorMessage={t("articleEmptyError")}
+        />
+      </main>
     </div>
   );
 };
 
-export default Index;
+export const getStaticProps = async ({ locale }: GetStaticPropsContext) => {
+  const articles = await getAllLocaledArticles(
+    `_data/${locale}/blog`,
+    locale as string
+  );
+
+  return {
+    props: {
+      articles,
+      ...(await serverSideTranslations(locale as string, ["common"])),
+    },
+  };
+};
+
+export default Blog;
