@@ -14,7 +14,7 @@ const NavItem = ({ children, className, href, ...rest }: INavItem) => {
   return (
     <Link href={href}>
       <p
-        className={`flex justify-start pc:justify-end m-0 py-2 pc:py-0 px-4 pc:last:pr-0 border-b-2 pc:border-b-0 cursor-pointer ${activeStyle} ${
+        className={`z-[1] bg-background flex justify-start pc:justify-end m-0 py-[20px] pc:py-0 pc:last:pr-0 last:border-b-2 pc:border-b-0 cursor-pointer ${activeStyle} ${
           className || ""
         }`}
         {...rest}

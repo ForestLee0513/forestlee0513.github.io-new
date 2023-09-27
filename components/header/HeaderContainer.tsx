@@ -7,7 +7,7 @@ const HeaderContainer = ({
   ...rest
 }: HTMLAttributes<HTMLElement>) => {
   return (
-    <header className={`py-4 border-b ${className}`} {...rest}>
+    <header className={`${className}`} {...rest}>
       <Container className="flex items-center">{children}</Container>
     </header>
   );

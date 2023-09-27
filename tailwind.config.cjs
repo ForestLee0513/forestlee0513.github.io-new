@@ -40,6 +40,9 @@ module.exports = {
             h6: {
               fontSize: "1.188rem",
             },
+            a: {
+              margin: 0,
+            },
           },
         },
       }),
