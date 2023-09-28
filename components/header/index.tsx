@@ -3,9 +3,10 @@ import HeaderContainer from "./HeaderContainer";
 import HeaderList from "./HeaderList";
 import { HeaderItem, HeaderItemFull } from "./HeaderItem";
 import { NavList, NavItem } from "~/components/nav";
-import bio from "~/bio";
-import ThemeToggler from "~/components/ThemeToggler";
-import MenuIcon from "@mui/icons-material/Menu";
+
+import Menu from "~/public/assets/icons/menu.svg";
+import X from "~/public/assets/icons/x.svg";
+
 import useToggle from "~/hooks/useToggle";
 
 const Header = () => {
@@ -38,11 +39,12 @@ const Header = () => {
           <ThemeToggler />
         </HeaderItemFull> */}
         <HeaderItemFull className="pc:hidden flex-0">
-          <button
-            className="my-0 w-8 h-8 flex items-center justify-center mr-0"
-            onClick={toggle}
-          >
-            <MenuIcon className="w-5 h-5" />
+          <button onClick={toggle} className="w-[28px] h-[28px]">
+            {isOpen ? (
+              <X className="w-full h-full" />
+            ) : (
+              <Menu className="w-full h-full" />
+            )}
           </button>
         </HeaderItemFull>
       </HeaderList>
