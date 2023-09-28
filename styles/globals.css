@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("/public/assets/fonts/pretendard/pretendard-subset.css");
+@import url("/public/assets/fonts/pretendard/pretendard.css");
+
 @layer base {
   /* Set default color of text and background. */
   html {

@@ -17,11 +17,14 @@ module.exports = {
       primary: "#3A4C2F",
       secondary: "#DCE5D7",
     },
-
     extend: {
+      fontFamily: {
+        Pretendard: ["Pretendard"],
+      },
       typography: (theme) => ({
         DEFAULT: {
           css: {
+            fontFamily: "Pretendard, sans-serif",
             h1: {
               fontSize: "3rem",
             },
