@@ -6,6 +6,7 @@ import { NavList, NavItem } from "~/components/nav";
 
 import Menu from "~/public/assets/icons/menu.svg";
 import X from "~/public/assets/icons/x.svg";
+import Logo from "~/public/assets/icons/logo.svg";
 
 import useToggle from "~/hooks/useToggle";
 
@@ -17,8 +18,9 @@ const Header = () => {
       <HeaderList className="flex pc:flex-col pc:pt-[10px]">
         <HeaderItem>
           <Link href="/">
-            {/* This div element is temporary element. this div will be change to svg icon very soon. */}
-            <div className="w-[28px] h-[28px] my-0 bg-primary"></div>
+            <div className="w-[28px] h-[28px] pc:w-[48px] pc:h-[48px] my-0">
+              <Logo className="w-full h-full" />
+            </div>
           </Link>
         </HeaderItem>
         <HeaderItem
