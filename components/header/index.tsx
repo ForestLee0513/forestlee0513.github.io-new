@@ -18,7 +18,7 @@ const Header = () => {
       <HeaderList className="flex pc:flex-col pc:pt-[10px]">
         <HeaderItem>
           <Link href="/">
-            <div className="w-[28px] h-[28px] pc:w-[48px] pc:h-[48px] my-0">
+            <div className="w-[28px] h-[28px] pc:w-[48px] pc:h-[48px] my-0 cursor-pointer">
               <Logo className="w-full h-full" />
             </div>
           </Link>
