@@ -17,16 +17,29 @@ const Blog = ({ articles }: Props) => {
   const { t } = useTranslation("common");
 
   return (
-    <div>
+    <>
       <HeadMeta useDyanmicThumbnail={false} />
-      <main>
-        <List
-          route="/blog"
-          articles={articles}
-          emptyErrorMessage={t("articleEmptyError")}
-        />
-      </main>
-    </div>
+      <div className="col-span-4 pc:col-span-2">
+        <form>
+          <input type="text" className="w-full" />
+          <h2 className="hidden pc:block">Category</h2>
+        </form>
+      </div>
+      <ul className="w-full grid pc:grid-cols-3 m-0 p-0 pc:gap-x-[40px] col-span-4 pc:col-span-6">
+        <li className="col-span-1 m-0 p-0"></li>
+        <li className="col-span-1 m-0 p-0"></li>
+        <li className="col-span-1 m-0 p-0"></li>
+        <li className="col-span-1 m-0 p-0"></li>
+        <li className="col-span-1 m-0 p-0"></li>
+        <li className="col-span-1 m-0 p-0"></li>
+      </ul>
+
+      {/* <List
+        route="/blog"
+        articles={articles}
+        emptyErrorMessage={t("articleEmptyError")}
+      /> */}
+    </>
   );
 };
 
