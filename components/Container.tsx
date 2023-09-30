@@ -7,7 +7,9 @@ const Container = ({
 }: HTMLAttributes<HTMLDivElement>) => {
   return (
     <div
-      className={`container mx-auto prose dark:prose-invert ${className || ""}`}
+      className={`grid grid-cols-4 pc:grid-cols-8 pc:gap-[40px] mx-auto max-w-[90%] prose dark:prose-invert ${
+        className || ""
+      }`}
       {...rest}
     >
       {children}

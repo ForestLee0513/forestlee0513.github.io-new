@@ -15,7 +15,7 @@ const Header = () => {
 
   return (
     <HeaderContainer className="relative">
-      <HeaderList className="flex pc:flex-col pc:pt-[10px]">
+      <HeaderList className="flex pc:flex-col pc:pt-[10px] col-span-full">
         <HeaderItem>
           <Link href="/">
             <div className="w-[28px] h-[28px] pc:w-[48px] pc:h-[48px] my-0 cursor-pointer">
