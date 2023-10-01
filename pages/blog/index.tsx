@@ -1,12 +1,12 @@
 import { GetStaticPropsContext } from "next";
+import Image from "next/image";
 
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import { getAllLocaledArticles } from "~/lib/markdownParser";
 import Post from "~/types/article";
 import HeadMeta from "~/components/HeadMeta";
-import { useEffect } from "react";
-import Image from "next/image";
+import SearchIcon from "~/public/assets/icons/search.svg";
 
 type Props = {
   articles: Post[];
@@ -18,7 +18,14 @@ const Blog = ({ articles }: Props) => {
       <HeadMeta useDyanmicThumbnail={false} />
       <div className="col-span-4 pc:col-span-2">
         <form>
-          <input type="text" className="w-full" />
+          <div className="p-[6px] pc:p-[10px] border-b-[2px] flex">
+            <SearchIcon className="w-[28px] h-[28px]" />
+            <input
+              type="text"
+              className="w-full bg-[transparent] pl-[10px]"
+              placeholder="Search"
+            />
+          </div>
           <h2 className="hidden pc:block mt-[40px]">Category</h2>
           {/* Category list */}
           <ul className="m-0 mt-[10px] p-0 list-none flex overflow-x-auto pc:block">
