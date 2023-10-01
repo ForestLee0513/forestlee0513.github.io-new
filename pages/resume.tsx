@@ -23,13 +23,15 @@ const Resume = ({ article }: Props) => {
     return (
       <>
         <HeadMeta title="Resume" useDyanmicThumbnail={false} />
-        <Header
-          title={title}
-          date={date}
-          readingTime={readingTime}
-          description={description}
-        />
-        <Body article={article} />
+        <div className="col-span-4">
+          <Header
+            title={title}
+            date={date}
+            readingTime={readingTime}
+            description={description}
+          />
+          <Body article={article} />
+        </div>
       </>
     );
   }

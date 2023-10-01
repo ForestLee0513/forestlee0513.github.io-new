@@ -8,12 +8,17 @@ import Post from "~/types/article";
 import HeadMeta from "~/components/HeadMeta";
 import SearchIcon from "~/public/assets/icons/search.svg";
 import Input from "~/components/Input";
+import { useEffect } from "react";
 
 type Props = {
   articles: Post[];
 };
 
 const Blog = ({ articles }: Props) => {
+  useEffect(() => {
+    console.log(articles);
+  }, [articles]);
+
   return (
     <>
       <HeadMeta useDyanmicThumbnail={false} />
@@ -37,78 +42,35 @@ const Blog = ({ articles }: Props) => {
       </div>
       {/* Articles */}
       <ul className="w-full grid grid-cols-4 pc:grid-cols-3 m-0 p-0 gap-[20px] pc:gap-[40px] pt-[20px] pc:pt-0 col-span-4 pc:col-span-6">
-        <li className="col-span-4 pc:col-span-1 m-0 p-0 flex flex-col">
-          <div className="pt-[54%] mt-0 relative">
-            <Image
-              src="/assets/images/author.png"
-              alt="thumbnail"
-              className="w-full h-full m-0"
-              layout="fill"
-              objectFit="cover"
-            />
-          </div>
-          <div className="flex flex-col mt-[20px]">
-            <h3>Test</h3>
-            <p className="mt-[10px] mb-0">2023.01.01</p>
-            <p className="mt-[10px] mb-0">
-              The quick brown fox jumps over the lazy dog
-            </p>
-          </div>
-        </li>
-        <li className="col-span-4 pc:col-span-1 m-0 p-0 flex flex-col">
-          <div className="pt-[54%] mt-0 relative">
-            <Image
-              src="/assets/images/default-thumbnail.png"
-              alt="thumbnail"
-              className="w-full h-full m-0"
-              layout="fill"
-              objectFit="cover"
-            />
-          </div>
-          <div className="flex flex-col mt-[20px]">
-            <h3>Test</h3>
-            <p className="mt-[10px] mb-0">2023.01.01</p>
-            <p className="mt-[10px] mb-0">
-              The quick brown fox jumps over the lazy dog
-            </p>
-          </div>
-        </li>
-        <li className="col-span-4 pc:col-span-1 m-0 p-0 flex flex-col">
-          <div className="pt-[54%] mt-0 relative">
-            <Image
-              src="/assets/images/default-thumbnail.png"
-              alt="thumbnail"
-              className="w-full h-full m-0"
-              layout="fill"
-              objectFit="cover"
-            />
-          </div>
-          <div className="flex flex-col mt-[20px]">
-            <h3>Test</h3>
-            <p className="mt-[10px] mb-0">2023.01.01</p>
-            <p className="mt-[10px] mb-0">
-              The quick brown fox jumps over the lazy dog
-            </p>
-          </div>
-        </li>
-        <li className="col-span-4 pc:col-span-1 m-0 p-0 flex flex-col">
-          <div className="pt-[54%] mt-0 relative">
-            <Image
-              src="/assets/images/default-thumbnail.png"
-              alt="thumbnail"
-              className="w-full h-full m-0"
-              layout="fill"
-              objectFit="cover"
-            />
-          </div>
-          <div className="flex flex-col mt-[20px]">
-            <h3>Test</h3>
-            <p className="mt-[10px] mb-0">2023.01.01</p>
-            <p className="mt-[10px] mb-0">
-              The quick brown fox jumps over the lazy dog
-            </p>
-          </div>
-        </li>
+        {articles.map((article) => {
+          const {
+            slug,
+            frontmatter: { date, description, title },
+          } = article;
+          return (
+            <li
+              className="col-span-4 pc:col-span-1 m-0 p-0 flex flex-col cursor-pointer"
+              key={slug}
+            >
+              <a href={`/blog/${slug}`} className="no-underline">
+                <div className="pt-[54%] mt-0 relative bg-secondary">
+                  {/* <Image
+                  src="/assets/images/author.png"
+                  alt={`${slug}-thumbnail`}
+                  className="w-full h-full m-0"
+                  layout="fill"
+                  objectFit="cover"
+                /> */}
+                </div>
+                <div className="flex flex-col mt-[20px]">
+                  <h3>{title}</h3>
+                  <p className="mt-[10px] mb-0">{date}</p>
+                  <p className="mt-[10px] mb-0">{description}</p>
+                </div>
+              </a>
+            </li>
+          );
+        })}
       </ul>
 
       {/* <List
