@@ -6,6 +6,7 @@ import { getAllLocaledArticles } from "~/lib/markdownParser";
 import Post from "~/types/article";
 import HeadMeta from "~/components/HeadMeta";
 import { useEffect } from "react";
+import Image from "next/image";
 
 type Props = {
   articles: Post[];
@@ -33,11 +34,13 @@ const Blog = ({ articles }: Props) => {
       {/* Articles */}
       <ul className="w-full grid grid-cols-4 pc:grid-cols-3 m-0 p-0 gap-[20px] pc:gap-[40px] pt-[20px] pc:pt-0 col-span-4 pc:col-span-6">
         <li className="col-span-4 pc:col-span-1 m-0 p-0 flex flex-col">
-          <div className="w-full max-h-[60vh] pc:h-[30vh] bg-secondary m-0">
-            <img
+          <div className="pt-[54%] mt-0 relative">
+            <Image
               src="/assets/images/author.png"
               alt="thumbnail"
               className="w-full h-full m-0"
+              layout="fill"
+              objectFit="cover"
             />
           </div>
           <div className="flex flex-col mt-[20px]">
@@ -49,11 +52,13 @@ const Blog = ({ articles }: Props) => {
           </div>
         </li>
         <li className="col-span-4 pc:col-span-1 m-0 p-0 flex flex-col">
-          <div className="w-full max-h-[60vh] pc:h-[30vh] bg-secondary m-0">
-            <img
+          <div className="pt-[54%] mt-0 relative">
+            <Image
               src="/assets/images/default-thumbnail.png"
               alt="thumbnail"
               className="w-full h-full m-0"
+              layout="fill"
+              objectFit="cover"
             />
           </div>
           <div className="flex flex-col mt-[20px]">
@@ -65,11 +70,13 @@ const Blog = ({ articles }: Props) => {
           </div>
         </li>
         <li className="col-span-4 pc:col-span-1 m-0 p-0 flex flex-col">
-          <div className="w-full max-h-[60vh] pc:h-[30vh] bg-secondary m-0">
-            <img
+          <div className="pt-[54%] mt-0 relative">
+            <Image
               src="/assets/images/default-thumbnail.png"
               alt="thumbnail"
               className="w-full h-full m-0"
+              layout="fill"
+              objectFit="cover"
             />
           </div>
           <div className="flex flex-col mt-[20px]">
@@ -81,11 +88,13 @@ const Blog = ({ articles }: Props) => {
           </div>
         </li>
         <li className="col-span-4 pc:col-span-1 m-0 p-0 flex flex-col">
-          <div className="w-full max-h-[60vh] pc:h-[30vh] bg-secondary m-0">
-            <img
+          <div className="pt-[54%] mt-0 relative">
+            <Image
               src="/assets/images/default-thumbnail.png"
               alt="thumbnail"
               className="w-full h-full m-0"
+              layout="fill"
+              objectFit="cover"
             />
           </div>
           <div className="flex flex-col mt-[20px]">
