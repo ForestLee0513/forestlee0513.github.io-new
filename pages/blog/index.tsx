@@ -31,8 +31,8 @@ const Blog = ({ articles }: Props) => {
         </form>
       </div>
       {/* Articles */}
-      <ul className="w-full grid pc:grid-cols-3 m-0 p-0 pc:gap-[40px] gap-y-[20px] pt-[20px] pc:pt-0 col-span-4 pc:col-span-6">
-        <li className="col-span-1 m-0 p-0 flex flex-col">
+      <ul className="w-full grid grid-cols-4 pc:grid-cols-3 m-0 p-0 gap-[20px] pc:gap-[40px] pt-[20px] pc:pt-0 col-span-4 pc:col-span-6">
+        <li className="col-span-4 pc:col-span-1 m-0 p-0 flex flex-col">
           <div className="w-full max-h-[60vh] pc:h-[30vh] bg-secondary m-0">
             <img
               src="/assets/images/author.png"
@@ -48,7 +48,39 @@ const Blog = ({ articles }: Props) => {
             </p>
           </div>
         </li>
-        <li className="col-span-1 m-0 p-0 flex flex-col">
+        <li className="col-span-4 pc:col-span-1 m-0 p-0 flex flex-col">
+          <div className="w-full max-h-[60vh] pc:h-[30vh] bg-secondary m-0">
+            <img
+              src="/assets/images/default-thumbnail.png"
+              alt="thumbnail"
+              className="w-full h-full m-0"
+            />
+          </div>
+          <div className="flex flex-col mt-[20px]">
+            <h3>Test</h3>
+            <p className="mt-[10px] mb-0">2023.01.01</p>
+            <p className="mt-[10px] mb-0">
+              The quick brown fox jumps over the lazy dog
+            </p>
+          </div>
+        </li>
+        <li className="col-span-4 pc:col-span-1 m-0 p-0 flex flex-col">
+          <div className="w-full max-h-[60vh] pc:h-[30vh] bg-secondary m-0">
+            <img
+              src="/assets/images/default-thumbnail.png"
+              alt="thumbnail"
+              className="w-full h-full m-0"
+            />
+          </div>
+          <div className="flex flex-col mt-[20px]">
+            <h3>Test</h3>
+            <p className="mt-[10px] mb-0">2023.01.01</p>
+            <p className="mt-[10px] mb-0">
+              The quick brown fox jumps over the lazy dog
+            </p>
+          </div>
+        </li>
+        <li className="col-span-4 pc:col-span-1 m-0 p-0 flex flex-col">
           <div className="w-full max-h-[60vh] pc:h-[30vh] bg-secondary m-0">
             <img
               src="/assets/images/default-thumbnail.png"
