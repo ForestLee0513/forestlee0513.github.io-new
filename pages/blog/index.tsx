@@ -64,8 +64,8 @@ const Blog = ({ articles }: Props) => {
                 </div>
                 <div className="flex flex-col mt-[20px]">
                   <h3>{title}</h3>
-                  <p className="mt-[10px] mb-0">{date}</p>
-                  <p className="mt-[10px] mb-0">{description}</p>
+                  <p>{date}</p>
+                  <p>{description}</p>
                 </div>
               </a>
             </li>

@@ -25,33 +25,29 @@ module.exports = {
         DEFAULT: {
           css: {
             fontFamily: "Pretendard, sans-serif",
+            "p, span, h1, h2, h3, h4, h5, h6": {
+              marginBottom: "10px",
+              marginTop: 0,
+            },
             h1: {
               fontSize: "3rem",
-              margin: 0,
             },
             h2: {
               fontSize: "2.5rem",
-              margin: 0,
             },
             h3: {
               fontSize: "2.062rem",
-              margin: 0,
             },
             h4: {
               fontSize: "1.75rem",
-              margin: 0,
             },
             h5: {
               fontSize: "1.438rem",
-              margin: 0,
             },
             h6: {
               fontSize: "1.188rem",
-              margin: 0,
             },
-            a: {
-              margin: 0,
-            },
+            a: {},
           },
         },
       }),

@@ -20,7 +20,7 @@ const BlogArticle = ({ article }: Props) => {
   } = article;
 
   return (
-    <>
+    <div className="col-start-3 col-end-7">
       <HeadMeta
         title={title}
         description={description}
@@ -33,8 +33,7 @@ const BlogArticle = ({ article }: Props) => {
         description={description}
       />
       <Body article={article} />
-      <AuthorCard />
-    </>
+    </div>
   );
 };
 
