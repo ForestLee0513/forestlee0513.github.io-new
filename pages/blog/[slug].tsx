@@ -20,7 +20,7 @@ const BlogArticle = ({ article }: Props) => {
   } = article;
 
   return (
-    <div className="col-start-3 col-end-7">
+    <div className="pc:col-start-3 pc:col-end-7 col-span-4">
       <HeadMeta
         title={title}
         description={description}
