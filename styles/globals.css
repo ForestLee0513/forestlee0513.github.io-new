@@ -6,7 +6,6 @@
 @import url("/public/assets/fonts/pretendard/pretendard.css");
 
 @layer base {
-  /* Set default color of text and background. */
   html {
     @apply text-text;
     @apply bg-background;

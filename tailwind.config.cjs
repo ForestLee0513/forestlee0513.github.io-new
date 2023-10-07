@@ -13,9 +13,12 @@ module.exports = {
     colors: {
       background: "#EAEFE6",
       text: "#131910",
+      textOpposite: "#FBFFFA",
       textSecondary: "#4C5349",
       primary: "#3A4C2F",
       secondary: "#DCE5D7",
+      hover: "#5D784D",
+      active: "#28351F",
     },
     extend: {
       fontFamily: {
