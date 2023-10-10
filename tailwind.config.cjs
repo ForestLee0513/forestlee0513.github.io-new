@@ -28,6 +28,9 @@ module.exports = {
         DEFAULT: {
           css: {
             fontFamily: "Pretendard, sans-serif",
+            "*:not(.no-prose) a:not(.no-prose)": {
+              fontWeight: 400,
+            },
             "p, span, h1, h2, h3, h4, h5, h6": {
               marginBottom: "10px",
               marginTop: 0,
@@ -50,7 +53,11 @@ module.exports = {
             h6: {
               fontSize: "1.188rem",
             },
-            a: {},
+            hr: {
+              borderColor: "text",
+              marginTop: "10px",
+              marginBottom: "10px",
+            },
           },
         },
       }),

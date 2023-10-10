@@ -6,6 +6,7 @@ import {
 import { Body, Header, AuthorCard } from "~/components/article";
 import HeadMeta from "~/components/HeadMeta";
 import { GetStaticPropsContext } from "next";
+import { Container } from "~/components";
 
 type Props = {
   article: ArticleType;
@@ -29,14 +30,17 @@ const ProjectArticle = ({ article }: Props) => {
         description={description}
         useDyanmicThumbnail={true}
       />
-      <Header
-        title={title}
-        date={date}
-        readingTime={readingTime}
-        description={description}
-      />
-      <Body article={article} />
-      <AuthorCard />
+      <Container className="py-4">
+        <div className="pc:col-start-3 pc:col-end-7 col-span-4">
+          <Header
+            title={title}
+            date={date}
+            readingTime={readingTime}
+            description={description}
+          />
+          <Body article={article} />
+        </div>
+      </Container>
     </>
   );
 };

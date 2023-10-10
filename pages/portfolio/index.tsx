@@ -18,12 +18,22 @@ const portfolio = ({ articles }: Props) => {
       <HeadMeta title="portfolio" useDyanmicThumbnail={false} />
       <Container className="py-4 flex-1 grid-rows-1 overflow-hidden">
         <div className="col-span-4 overflow-y-auto">
-          <ul>
-            <li>
-              <h3>ACME Proj</h3>
-              <p>Simple desc.</p>
-              <hr />
-            </li>
+          <ul className="m-0 p-0 list-none">
+            {articles.map((article, index) => {
+              const {
+                frontmatter: { title, description },
+                slug,
+              } = article;
+              return (
+                <li className="m-0 p-0" key={index}>
+                  <a href={`/portfolio/${slug}`} className="no-underline">
+                    <h3>{title}</h3>
+                    <p className=" text-textSecondary">{description}</p>
+                    <hr />
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         </div>
         <div className="col-span-4 hidden pc:block">
