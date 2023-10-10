@@ -44,7 +44,7 @@ const ProjectArticle = ({ article }: Props) => {
 export const getStaticProps = async ({ params, locale }: IParams) => {
   const article = await getArticleFromSlug(
     params.slug,
-    `_data/${locale}/projects`,
+    `_data/${locale}/portfolio`,
     locale as string
   );
 
@@ -59,7 +59,7 @@ export const getStaticProps = async ({ params, locale }: IParams) => {
 export const getStaticPaths = async ({ locales }: GetStaticPropsContext) => {
   const pathsPromise = locales?.map(async (locale) => {
     const articles = await getAllLocaledArticles(
-      `_data/${locale}/projects`,
+      `_data/${locale}/portfolio`,
       locale as string
     );
 

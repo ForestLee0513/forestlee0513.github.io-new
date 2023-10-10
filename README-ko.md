@@ -61,11 +61,11 @@ const Page = () => {
  ┣ 📂locales
  ┃ ┣ 📂en-US
  ┃ ┃ ┣ 📜common.json
- ┃ ┃ ┣ 📜projects.json
+ ┃ ┃ ┣ 📜portfolio.json
  ┃ ┃ ┗ 📜resume.json
  ┃ ┗ 📂ko
  ┃ ┃ ┣ 📜common.json
- ┃ ┃ ┣ 📜projects.json
+ ┃ ┃ ┣ 📜portfolio.json
  ┃ ┃ ┗ 📜resume.json
  ┗ etc...
 ```
@@ -247,11 +247,11 @@ export default bio;
    ...
    ```
 
-   Markdown과 MDX로 이력서를 작성할 수 있으며 경로는 `_data/projects` 입니다.
+   Markdown과 MDX로 이력서를 작성할 수 있으며 경로는 `_data/portfolio` 입니다.
    만약 성공적으로 파일을 생성했다면 아래와 같은 결과물이 출력됩니다.
 
-   ![Projects index](docs/images/projects-index.png)
-   ![Projects article](docs/images/projects-article.png)
+   ![portfolio index](docs/images/portfolio-index.png)
+   ![portfolio article](docs/images/portfolio-article.png)
 
 ### 6. 배포하기
 

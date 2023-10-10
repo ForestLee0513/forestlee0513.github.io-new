@@ -11,7 +11,7 @@ Yarn: 1.22.18
 
 ### 1. Markdown/MDX Articles
 
-You can write a articles with Markdown/MDX in Blog, Resume and Projects.
+You can write a articles with Markdown/MDX in Blog, Resume and portfolio.
 
 ### 2. Reading time
 
@@ -63,11 +63,11 @@ If you follow this steps, you can add locale in your blog. (yay!)
  ┣ 📂locales
  ┃ ┣ 📂en-US
  ┃ ┃ ┣ 📜common.json
- ┃ ┃ ┣ 📜projects.json
+ ┃ ┃ ┣ 📜portfolio.json
  ┃ ┃ ┗ 📜resume.json
  ┃ ┗ 📂ko
  ┃ ┃ ┣ 📜common.json
- ┃ ┃ ┣ 📜projects.json
+ ┃ ┃ ┣ 📜portfolio.json
  ┃ ┃ ┗ 📜resume.json
  ┗ etc...
 ```
@@ -248,11 +248,11 @@ You can write a articles with markdown or MDX and you can import a component of 
    ...
    ```
 
-   You can write a resume with Markdown or MDX in `_data/projects` folder.
+   You can write a resume with Markdown or MDX in `_data/portfolio` folder.
    If you edit a file correctlly, you'll get this results like this:
 
-   ![Projects index](docs/images/projects-index.png)
-   ![Projects article](docs/images/projects-article.png)
+   ![portfolio index](docs/images/portfolio-index.png)
+   ![portfolio article](docs/images/portfolio-article.png)
 
 ### 6. Deploy it!
 
