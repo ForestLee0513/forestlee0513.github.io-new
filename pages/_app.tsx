@@ -5,7 +5,6 @@ import type { AppProps } from "next/app";
 
 import { appWithTranslation } from "next-i18next";
 
-import Container from "~/components/Container";
 import Header from "~/components/header";
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -13,9 +12,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <ThemeProvider enableSystem={true} attribute="class">
         <Header />
-        <Container className="py-4">
-          <Component {...pageProps} />
-        </Container>
+        <Component {...pageProps} />
       </ThemeProvider>
     </>
   );

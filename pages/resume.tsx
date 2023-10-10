@@ -2,6 +2,7 @@ import { GetStaticPropsContext } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 
+import Container from "~/components/Container";
 import ArticleType from "~/types/article";
 import { getArticleFromSlug } from "~/lib/markdownParser";
 import { Body, Header } from "~/components/article";
@@ -23,18 +24,20 @@ const Resume = ({ article }: Props) => {
     return (
       <>
         <HeadMeta title="Resume" useDyanmicThumbnail={false} />
-        <div className="col-span-4">
-          <div className="w-full h-full bg-secondary"></div>
-        </div>
-        <div className="col-span-4">
-          <Header
-            title={title}
-            date={date}
-            readingTime={readingTime}
-            description={description}
-          />
-          <Body article={article} />
-        </div>
+        <Container className="py-4 flex-1">
+          <div className="col-span-4 h-full">
+            <div className="w-full bg-secondary"></div>
+          </div>
+          {/* <div className="col-span-4 h-full">
+            <Header
+              title={title}
+              date={date}
+              readingTime={readingTime}
+              description={description}
+            />
+            <Body article={article} />
+          </div> */}
+        </Container>
       </>
     );
   }

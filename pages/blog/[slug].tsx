@@ -3,7 +3,8 @@ import {
   getArticleFromSlug,
   getAllLocaledArticles,
 } from "~/lib/markdownParser";
-import { Body, Header, AuthorCard } from "~/components/article";
+import Container from "~/components/Container";
+import { Body, Header } from "~/components/article";
 import HeadMeta from "~/components/HeadMeta";
 import { GetStaticPropsContext } from "next";
 
@@ -20,20 +21,22 @@ const BlogArticle = ({ article }: Props) => {
   } = article;
 
   return (
-    <div className="pc:col-start-3 pc:col-end-7 col-span-4">
-      <HeadMeta
-        title={title}
-        description={description}
-        useDyanmicThumbnail={true}
-      />
-      <Header
-        title={title}
-        date={date}
-        readingTime={readingTime}
-        description={description}
-      />
-      <Body article={article} />
-    </div>
+    <Container className="py-4">
+      <div className="pc:col-start-3 pc:col-end-7 col-span-4">
+        <HeadMeta
+          title={title}
+          description={description}
+          useDyanmicThumbnail={true}
+        />
+        <Header
+          title={title}
+          date={date}
+          readingTime={readingTime}
+          description={description}
+        />
+        <Body article={article} />
+      </div>
+    </Container>
   );
 };
 
