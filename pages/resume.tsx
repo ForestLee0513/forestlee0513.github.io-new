@@ -24,11 +24,11 @@ const Resume = ({ article }: Props) => {
     return (
       <>
         <HeadMeta title="Resume" useDyanmicThumbnail={false} />
-        <Container className="py-4 flex-1">
-          <div className="col-span-4 h-full">
-            <div className="w-full bg-secondary"></div>
+        <Container className="py-4 flex-1 grid-rows-1 overflow-hidden">
+          <div className="col-span-4">
+            <div className="w-full h-full bg-secondary"></div>
           </div>
-          {/* <div className="col-span-4 h-full">
+          <div className="col-span-4 overflow-y-auto">
             <Header
               title={title}
               date={date}
@@ -36,7 +36,7 @@ const Resume = ({ article }: Props) => {
               description={description}
             />
             <Body article={article} />
-          </div> */}
+          </div>
         </Container>
       </>
     );
