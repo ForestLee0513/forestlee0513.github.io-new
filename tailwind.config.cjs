@@ -19,6 +19,16 @@ module.exports = {
       secondary: "#DCE5D7",
       hover: "#5D784D",
       active: "#28351F",
+      dark: {
+        background: "#131910",
+        text: "#FBFFFA",
+        textOpposite: "#131910",
+        textSecondary: "#CFDCCB",
+        primary: "#BED0B3",
+        secondary: "#1F281A",
+        hover: "#DAEDCE",
+        active: "#95AD87",
+      },
     },
     extend: {
       fontFamily: {
