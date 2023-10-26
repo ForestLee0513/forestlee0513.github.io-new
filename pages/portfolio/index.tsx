@@ -6,13 +6,16 @@ import { getAllLocaledArticles } from "~/lib/markdownParser";
 import HeadMeta from "~/components/HeadMeta";
 import Post from "~/types/article";
 import Container from "~/components/Container";
+import { useState } from "react";
+import Image from "next/image";
 
 type Props = {
   articles: Post[];
 };
 
-const portfolio = ({ articles }: Props) => {
-  console.log(articles);
+const Portfolio = ({ articles }: Props) => {
+  const [coverImageUrl, setCoverImageUrl] = useState("");
+
   return (
     <>
       <HeadMeta title="portfolio" useDyanmicThumbnail={false} />
@@ -21,11 +24,18 @@ const portfolio = ({ articles }: Props) => {
           <ul className="m-0 p-0 list-none">
             {articles.map((article, index) => {
               const {
-                frontmatter: { title, description },
+                frontmatter: { title, description, coverImage },
                 slug,
               } = article;
               return (
-                <li className="m-0 p-0" key={index}>
+                <li
+                  className="m-0 p-0"
+                  key={index}
+                  onMouseOver={() => {
+                    if (coverImage) setCoverImageUrl(coverImage);
+                  }}
+                  onMouseLeave={() => setCoverImageUrl("")}
+                >
                   <a href={`/portfolio/${slug}`} className="no-underline">
                     <h3>{title}</h3>
                     <p className=" text-textSecondary">{description}</p>
@@ -37,7 +47,19 @@ const portfolio = ({ articles }: Props) => {
           </ul>
         </div>
         <div className="col-span-4 hidden pc:block">
-          <div className="w-full h-full bg-secondary"></div>
+          <div className="w-full h-full bg-secondary relative">
+            {coverImageUrl ? (
+              <Image
+                src={coverImageUrl}
+                alt={`portfolio-thumbnail`}
+                className="w-full h-full m-0"
+                layout="fill"
+                objectFit="cover"
+              />
+            ) : (
+              ""
+            )}
+          </div>
         </div>
       </Container>
     </>
@@ -58,4 +80,4 @@ export const getStaticProps = async ({ locale }: GetStaticPropsContext) => {
   };
 };
 
-export default portfolio;
+export default Portfolio;
