@@ -2,6 +2,7 @@
 title: "마크다운 예제"
 description: "한국어로 작성된 마크다운 예제입니다."
 date: 2022-10-27 16:25:00
+coverImage: /assets/images/blog/mdx-example/ice-bear.png
 ---
 
 ## Regular Markdown Syntax.

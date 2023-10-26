@@ -16,10 +16,6 @@ type Props = {
 };
 
 const Blog = ({ articles }: Props) => {
-  useEffect(() => {
-    console.log(articles);
-  }, [articles]);
-
   return (
     <>
       <HeadMeta useDyanmicThumbnail={false} />
@@ -47,7 +43,7 @@ const Blog = ({ articles }: Props) => {
           {articles.map((article) => {
             const {
               slug,
-              frontmatter: { date, description, title },
+              frontmatter: { date, description, title, coverImage },
             } = article;
             return (
               <li
@@ -56,13 +52,17 @@ const Blog = ({ articles }: Props) => {
               >
                 <a href={`/blog/${slug}`} className="no-underline">
                   <div className="pt-[54%] mt-0 relative bg-secondary">
-                    {/* <Image
-                  src="/assets/images/author.png"
-                  alt={`${slug}-thumbnail`}
-                  className="w-full h-full m-0"
-                  layout="fill"
-                  objectFit="cover"
-                /> */}
+                    {coverImage ? (
+                      <Image
+                        src={coverImage}
+                        alt={`${slug}-thumbnail`}
+                        className="w-full h-full m-0"
+                        layout="fill"
+                        objectFit="cover"
+                      />
+                    ) : (
+                      ""
+                    )}
                   </div>
                   <div className="flex flex-col mt-[20px]">
                     <h3>{title}</h3>
@@ -74,12 +74,6 @@ const Blog = ({ articles }: Props) => {
             );
           })}
         </ul>
-
-        {/* <List
-        route="/blog"
-        articles={articles}
-        emptyErrorMessage={t("articleEmptyError")}
-      /> */}
       </Container>
     </>
   );
