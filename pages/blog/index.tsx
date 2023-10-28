@@ -18,7 +18,7 @@ type Props = {
 const Blog = ({ articles }: Props) => {
   return (
     <>
-      <HeadMeta useDyanmicThumbnail={false} />
+      <HeadMeta title="Blog" useDyanmicThumbnail={false} />
       <Container className="py-4">
         <div className="col-span-4 pc:col-span-2">
           <form>

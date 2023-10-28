@@ -18,7 +18,7 @@ const Portfolio = ({ articles }: Props) => {
 
   return (
     <>
-      <HeadMeta title="portfolio" useDyanmicThumbnail={false} />
+      <HeadMeta title="Portfolio" useDyanmicThumbnail={false} />
       <Container className="py-4 flex-1 grid-rows-1 overflow-hidden">
         <div className="col-span-4 overflow-y-auto">
           <ul className="m-0 p-0 list-none">
