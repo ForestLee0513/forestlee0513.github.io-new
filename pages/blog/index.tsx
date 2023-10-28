@@ -44,7 +44,11 @@ const Blog = ({ articles }: Props) => {
               {categories.map((category, index) => {
                 return (
                   <li
-                    className="m-0 first:pl-0 last:pr-0 p-[10px] first:pc:pl-[10px] last:pc:pr-[10px] block pc:list-item grow-0 shrink-0 basis-auto cursor-pointer"
+                    className={
+                      selectedCategory === category
+                        ? "m-0 first:pl-0 last:pr-0 p-[10px] first:pc:pl-[10px] last:pc:pr-[10px] block pc:list-item grow-0 shrink-0 basis-auto cursor-pointer underline font-black underline-offset-2 decoration-2"
+                        : "m-0 first:pl-0 last:pr-0 p-[10px] first:pc:pl-[10px] last:pc:pr-[10px] block pc:list-item grow-0 shrink-0 basis-auto cursor-pointer"
+                    }
                     key={`category-${index}`}
                     onClick={() => {
                       setSelectedCategory(category);
