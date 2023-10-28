@@ -79,8 +79,8 @@ export async function getAllLocaledArticles(
   }
 
   return await Promise.all(
-    getSlug(folderPath).map((slug) =>
-      getArticleFromSlug(slug, folderPath, locale || "")
-    )
+    getSlug(folderPath).map((slug) => {
+      return getArticleFromSlug(slug, folderPath, locale || "");
+    })
   );
 }

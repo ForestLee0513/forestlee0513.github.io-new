@@ -7,6 +7,7 @@ type ArticleType = {
     description: string;
     coverImage: string;
     ogImage: string;
+    category: string[];
   };
   excerpt: string;
   slug: string;

@@ -9,13 +9,25 @@ import Post from "~/types/article";
 import HeadMeta from "~/components/HeadMeta";
 import SearchIcon from "~/public/assets/icons/search.svg";
 import Input from "~/components/Input";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 type Props = {
   articles: Post[];
 };
 
 const Blog = ({ articles }: Props) => {
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const categories = [
+    ...new Set(
+      articles
+        .map((article) => {
+          const { category } = article.frontmatter;
+          return category;
+        })
+        .flat()
+    ),
+  ];
+
   return (
     <>
       <HeadMeta title="Blog" useDyanmicThumbnail={false} />
@@ -29,12 +41,24 @@ const Blog = ({ articles }: Props) => {
             <h2 className="hidden pc:block mt-[40px]">Category</h2>
             {/* Category list */}
             <ul className="m-0 mt-[10px] p-0 list-none flex overflow-x-auto pc:block">
-              <li className="m-0 first:pl-0 last:pr-0 p-[10px] first:pc:pl-[10px] last:pc:pr-[10px] block pc:list-item grow-0 shrink-0 basis-auto">
-                sample Category 1
-              </li>
-              <li className="m-0 first:pl-0 last:pr-0 p-[10px] first:pc:pl-[10px] last:pc:pr-[10px] block pc:list-item grow-0 shrink-0 basis-auto">
-                sample Category 2
-              </li>
+              {categories.map((category, index) => {
+                return (
+                  <li
+                    className="m-0 first:pl-0 last:pr-0 p-[10px] first:pc:pl-[10px] last:pc:pr-[10px] block pc:list-item grow-0 shrink-0 basis-auto cursor-pointer"
+                    key={`category-${index}`}
+                    onClick={() => {
+                      setSelectedCategory(category);
+
+                      // 동일한 카테고리 클릭 시 초기화
+                      if (selectedCategory === category) {
+                        setSelectedCategory("");
+                      }
+                    }}
+                  >
+                    {category}
+                  </li>
+                );
+              })}
             </ul>
           </form>
         </div>
