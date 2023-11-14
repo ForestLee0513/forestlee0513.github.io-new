@@ -24,7 +24,7 @@ const Resume = ({ article }: Props) => {
     return (
       <>
         <HeadMeta title="Resume" useDyanmicThumbnail={false} />
-        <Container className="py-4 flex-1 grid-rows-1 overflow-hidden">
+        <Container className="py-4 flex-1 grid-rows-1 overflow-auto pc:overflow-hidden">
           <div className="col-span-4">
             <div className="w-full h-full bg-secondary"></div>
           </div>
