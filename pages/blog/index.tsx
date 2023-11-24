@@ -1,4 +1,4 @@
-import { GetStaticPropsContext } from "next";
+import { GetServerSidePropsContext, GetStaticPropsContext } from "next";
 import Image from "next/image";
 
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -10,23 +10,39 @@ import HeadMeta from "~/components/HeadMeta";
 import SearchIcon from "~/public/assets/icons/search.svg";
 import Input from "~/components/Input";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 type Props = {
   articles: Post[];
+  categories: string[];
 };
 
-const Blog = ({ articles }: Props) => {
+const Blog = ({ articles, categories }: Props) => {
+  const router = useRouter();
   const [selectedCategory, setSelectedCategory] = useState("");
-  const categories = [
-    ...new Set(
-      articles
-        .map((article) => {
-          const { category } = article.frontmatter;
-          return category;
-        })
-        .flat()
-    ),
-  ];
+
+  // 카테고리 변경 함수
+  const onCategoryClick = (category: string) => {
+    router.replace({
+      query: { ...router.query, category },
+    });
+
+    // 동일한 카테고리 클릭 시 초기화
+    if (selectedCategory === category) {
+      router.replace({
+        query: { ...router.query, category: "" },
+      });
+    }
+  };
+
+  // 카테고리 쿼리스트링이 변경됐을 때 스테이트 지정
+  useEffect(() => {
+    const selectedCategoryFromQuery = router.query.category as string;
+    if (selectedCategoryFromQuery) {
+      setSelectedCategory(selectedCategoryFromQuery);
+    }
+    console.log(router.query.category);
+  }, [router.query.category]);
 
   return (
     <>
@@ -51,12 +67,7 @@ const Blog = ({ articles }: Props) => {
                     }
                     key={`category-${index}`}
                     onClick={() => {
-                      setSelectedCategory(category);
-
-                      // 동일한 카테고리 클릭 시 초기화
-                      if (selectedCategory === category) {
-                        setSelectedCategory("");
-                      }
+                      onCategoryClick(category);
                     }}
                   >
                     {category}
@@ -107,15 +118,42 @@ const Blog = ({ articles }: Props) => {
   );
 };
 
-export const getStaticProps = async ({ locale }: GetStaticPropsContext) => {
+export const getServerSideProps = async ({
+  locale,
+  query,
+}: GetServerSidePropsContext) => {
   const articles = await getAllLocaledArticles(
     `_data/${locale}/blog`,
     locale as string
   );
+  const categories = [
+    ...new Set(
+      articles
+        .map((article) => {
+          const { category } = article.frontmatter;
+          return category;
+        })
+        .flat()
+    ),
+  ];
+  const selectedCategory = query.category;
+
+  if (selectedCategory) {
+    return {
+      props: {
+        articles: articles.filter((article) =>
+          article.frontmatter.category.includes(selectedCategory)
+        ),
+        categories,
+        ...(await serverSideTranslations(locale as string, ["common"])),
+      },
+    };
+  }
 
   return {
     props: {
       articles,
+      categories,
       ...(await serverSideTranslations(locale as string, ["common"])),
     },
   };

@@ -1,9 +1,9 @@
 ---
-title: "마크다운 예제"
+title: "필터 테스트"
 description: "한국어로 작성된 마크다운 예제입니다."
 date: 2022-10-27 16:25:00
 coverImage: /assets/images/blog/mdx-example/ice-bear.png
-category: ["react", "typescript", "vue"]
+category: ["monorepo", "nextjs", "react", "vue"]
 ---
 
 ## Regular Markdown Syntax.
