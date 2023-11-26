@@ -38,10 +38,7 @@ const Blog = ({ articles, categories }: Props) => {
   // 카테고리 쿼리스트링이 변경됐을 때 스테이트 지정
   useEffect(() => {
     const selectedCategoryFromQuery = router.query.category as string;
-    if (selectedCategoryFromQuery) {
-      setSelectedCategory(selectedCategoryFromQuery);
-    }
-    console.log(router.query.category);
+    setSelectedCategory(selectedCategoryFromQuery);
   }, [router.query.category]);
 
   return (
