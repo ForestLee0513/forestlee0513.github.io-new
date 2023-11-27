@@ -99,6 +99,9 @@ const Blog = ({ articles, categories }: Props) => {
         </div>
         {/* Articles */}
         <ul className="w-full grid grid-cols-4 pc:grid-cols-3 m-0 p-0 gap-[20px] pc:gap-[40px] pt-[20px] pc:pt-0 col-span-4 pc:col-span-6">
+          {articles.length <= 0
+            ? "글을 찾지 못했습니다 검색 키워드를 다시 확인해주세요."
+            : ""}
           {articles.map((article) => {
             const {
               slug,
