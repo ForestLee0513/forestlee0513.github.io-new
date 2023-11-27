@@ -9,8 +9,9 @@ import Post from "~/types/article";
 import HeadMeta from "~/components/HeadMeta";
 import SearchIcon from "~/public/assets/icons/search.svg";
 import Input from "~/components/Input";
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import ArticleType from "~/types/article";
 
 type Props = {
   articles: Post[];
@@ -20,6 +21,7 @@ type Props = {
 const Blog = ({ articles, categories }: Props) => {
   const router = useRouter();
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [searchKeyword, setSearchKeyword] = useState("");
 
   // 카테고리 변경 함수
   const onCategoryClick = (category: string) => {
@@ -41,14 +43,35 @@ const Blog = ({ articles, categories }: Props) => {
     setSelectedCategory(selectedCategoryFromQuery);
   }, [router.query.category]);
 
+  // 검색 키워드 input 변경 이벤트함수
+  const onSearchInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault();
+    const {
+      target: { value },
+    } = event;
+
+    setSearchKeyword(value);
+  };
+
+  // Debounce 처리된 상태로 search 쿼리스트링 지정 (500ms)
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      router.replace({
+        query: { ...router.query, searchKeyword: searchKeyword },
+      });
+    }, 500);
+    return () => clearTimeout(timeoutId);
+  }, [searchKeyword]);
+
   return (
     <>
       <HeadMeta title="Blog" useDyanmicThumbnail={false} />
       <Container className="py-4">
         <div className="col-span-4 pc:col-span-2">
-          <form>
+          <div>
             <Input
               placeholder="Search"
+              onChange={onSearchInputChange}
               leftChildren={<SearchIcon className="w-[28px] h-[28px]" />}
             />
             <h2 className="hidden pc:block mt-[40px]">Category</h2>
@@ -72,7 +95,7 @@ const Blog = ({ articles, categories }: Props) => {
                 );
               })}
             </ul>
-          </form>
+          </div>
         </div>
         {/* Articles */}
         <ul className="w-full grid grid-cols-4 pc:grid-cols-3 m-0 p-0 gap-[20px] pc:gap-[40px] pt-[20px] pc:pt-0 col-span-4 pc:col-span-6">
@@ -133,23 +156,26 @@ export const getServerSideProps = async ({
         .flat()
     ),
   ];
-  const selectedCategory = query.category;
-
-  if (selectedCategory) {
-    return {
-      props: {
-        articles: articles.filter((article) =>
-          article.frontmatter.category.includes(selectedCategory)
-        ),
-        categories,
-        ...(await serverSideTranslations(locale as string, ["common"])),
-      },
-    };
-  }
+  const selectedCategory = query.category as string;
+  const searchKeyword = query.searchKeyword as string;
 
   return {
     props: {
-      articles,
+      articles: articles
+        .filter((article: ArticleType) => {
+          if (selectedCategory) {
+            return article.frontmatter.category.includes(selectedCategory);
+          }
+
+          return article;
+        })
+        .filter((article: ArticleType) => {
+          if (searchKeyword) {
+            return article.frontmatter.title.includes(searchKeyword);
+          }
+
+          return article;
+        }),
       categories,
       ...(await serverSideTranslations(locale as string, ["common"])),
     },
