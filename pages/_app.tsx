@@ -10,10 +10,10 @@ import Header from "~/components/header";
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-      <ThemeProvider enableSystem={true} attribute="class">
-        <Header />
-        <Component {...pageProps} />
-      </ThemeProvider>
+      {/* <ThemeProvider enableSystem={true} attribute="class"> */}
+      <Header />
+      <Component {...pageProps} />
+      {/* </ThemeProvider> */}
     </>
   );
 }
