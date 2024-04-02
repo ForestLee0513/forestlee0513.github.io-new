@@ -25,10 +25,7 @@ const Resume = ({ article }: Props) => {
       <>
         <HeadMeta title="Resume" useDyanmicThumbnail={false} />
         <Container className="py-4 flex-1 grid-rows-1 overflow-auto pc:overflow-hidden">
-          <div className="col-span-4">
-            <div className="w-full h-full bg-secondary"></div>
-          </div>
-          <div className="col-span-4 overflow-y-auto">
+          <div className="col-span-4 overflow-y-auto pc:col-start-3">
             <Header
               title={title}
               date={date}
