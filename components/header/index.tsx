@@ -13,6 +13,10 @@ import useToggle from "~/hooks/useToggle";
 const Header = () => {
   const [isOpen, toggle] = useToggle();
 
+  const closeMenu = () => {
+    toggle();
+  };
+
   return (
     <HeaderContainer className="relative">
       <HeaderList className="flex pc:flex-col pc:pt-[10px] col-span-full">
@@ -31,10 +35,18 @@ const Header = () => {
           } pc:flex`}
         >
           <NavList className="flex-col pc:flex-row uppercase pc:mt-[10px]">
-            <NavItem href="/blog">blog</NavItem>
-            <NavItem href="/portfolio">portfolio</NavItem>
-            <NavItem href="/resume">resume</NavItem>
-            <NavItem href="/contact">contact</NavItem>
+            <NavItem href="/blog" onClick={closeMenu}>
+              blog
+            </NavItem>
+            <NavItem href="/portfolio" onClick={closeMenu}>
+              portfolio
+            </NavItem>
+            <NavItem href="/resume" onClick={closeMenu}>
+              resume
+            </NavItem>
+            <NavItem href="/contact" onClick={closeMenu}>
+              contact
+            </NavItem>
           </NavList>
         </HeaderItem>
         {/* <HeaderItemFull>
